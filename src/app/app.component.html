@@ -1,14 +1,22 @@
-<div style="text-align:center">
+<div style="text-align:center; width: 700px">
   <h1>
     Welcome to {{title}}!
   </h1>
   <span *ngIf="user">{{user.username}}</span>
 </div>
 <a routerLink="/profile">Open profile</a>
+<router-outlet></router-outlet>
+<br><br><br><br>
 <button type="button" (click)="login()">Login</button>
 <button type="button" (click)="logout()">Logout</button>
-
-<router-outlet></router-outlet>
+<div style="height: 200px">
+  <br>
+  {{prebootTest}}
+  <br>
+  <h1 *ngIf="cb">123123123123</h1>
+</div>
+<input title="inp" [(ngModel)]="prebootTest" id="lol">
+<input title="cb" type="checkbox" [(ngModel)]="cb" id="lol1">
 
 
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +14,8 @@ import { ApiModule } from './api/api.module';
   imports: [
     BrowserModule.withServerTransition({ appId: 'angular-app' }),
     AppRoutingModule,
-    ApiModule
+    ApiModule,
+    FormsModule
   ],
   providers: [
     PlatformService

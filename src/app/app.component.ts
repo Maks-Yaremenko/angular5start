@@ -9,6 +9,8 @@ import { ApiService } from './api/api.service';
 export class AppComponent {
   title = 'ap';
   user;
+  prebootTest;
+  cb = true;
 
   constructor(private api: ApiService) {
     this.api.getCurrentUser().subscribe((user: any) => this.user = user);
