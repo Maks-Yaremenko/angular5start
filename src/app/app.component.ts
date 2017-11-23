@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ApiService } from './api/api.service';
 
 @Component({
   selector: 'ap-root',
@@ -7,20 +6,5 @@ import { ApiService } from './api/api.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ap';
-  user;
-  prebootTest;
-  cb = true;
-
-  constructor(private api: ApiService) {
-    this.api.getCurrentUser().subscribe((user: any) => this.user = user);
-  }
-
-  login() {
-    this.api.login({email: 'topGamer', password: '123123123'}).subscribe();
-  }
-
-  logout() {
-    this.api.logout();
-  }
+  title = 'App works';
 }
