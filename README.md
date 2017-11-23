@@ -3,8 +3,6 @@
 Based on Angular CLI, Server side rendering (Universal), Universal cache and cookies, PreBoot, Gzip
 
 ### Quick start
-**Make sure you have Node version >= 6.0 and NPM >= 3**
-> Clone/Download the repo then edit `app.component.ts` inside [`/src/app/app.component.ts`](/src/app/app.component.ts)
 
 ```bash
 git clone https://github.com/vidinev/angular5start.git
