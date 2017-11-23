@@ -10,7 +10,7 @@ import { PlatformService } from '../../core/platform.service';
 @Injectable()
 export class CacheInterceptor implements HttpInterceptor {
 
-  constructor(private cache: CacheService, private platform: PlatformService) {}
+  constructor(private cache: CacheService, private platform: PlatformService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.method !== 'GET') {

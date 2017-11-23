@@ -2,7 +2,13 @@
   <h1>
     Welcome to {{title}}!
   </h1>
+  <span *ngIf="user">{{user.username}}</span>
 </div>
 <a routerLink="/profile">Open profile</a>
+<button type="button" (click)="login()">Login</button>
+<button type="button" (click)="logout()">Logout</button>
 
 <router-outlet></router-outlet>
+
+
+
