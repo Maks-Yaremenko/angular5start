@@ -6,6 +6,7 @@ import { enableProdMode } from '@angular/core';
 
 import * as express from 'express';
 import * as compression from 'compression';
+import * as cookieParser from 'cookie-parser';
 import { join } from 'path';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -28,6 +29,7 @@ import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 const publicPath = join(DIST_FOLDER, 'browser');
 
 app.use(compression());
+app.use(cookieParser());
 
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
@@ -45,7 +47,7 @@ app.use('/assets', express.static(publicPath, { index: false }));
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-  res.render(join(publicPath, 'index.html'), { req });
+  res.render(join(publicPath, 'index.html'), { req, res });
 });
 
 // Start up the Node server

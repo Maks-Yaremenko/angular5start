@@ -28,10 +28,10 @@
     "@angular/router": "5.0.2",
     "@nguniversal/express-engine": "5.0.0-beta.5",
     "@nguniversal/module-map-ngfactory-loader": "5.0.0-beta.5",
-    "@ngx-utils/cache": "2.0.2",
-    "@ngx-utils/cookies": "2.0.1",
-    "@ngx-utils/express-engine": "^1.0.1",
+    "@ngx-utils/cache": "2.0.3",
+    "@ngx-utils/cookies": "2.0.2",
     "compression": "^1.7.1",
+    "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
     "rxjs": "5.5.2",
     "zone.js": "0.8.18"
