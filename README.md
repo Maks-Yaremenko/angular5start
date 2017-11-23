@@ -1,18 +1,45 @@
-# Start
+# Angular 5 Universal Starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.3.
+Based on Angular CLI, Server side rendering (Universal), Universal cache and cookies, PreBoot, Gzip
+
+### Quick start
+**Make sure you have Node version >= 6.0 and NPM >= 3**
+> Clone/Download the repo then edit `app.component.ts` inside [`/src/app/app.component.ts`](/src/app/app.component.ts)
+
+```bash
+git clone https://github.com/vidinev/angular5start.git
+
+# change directory to our repo
+cd angular5start
+
+# install the repo with npm
+npm install
+```
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+npm start
+# Navigate to http://localhost:4200/
+```
+
+The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
-## Build
+## Universal Build
+```bash
+npm run build:ssr
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+# If you want to serve universal application:
+npm run serve:ssr
+```
+## Simple build
+```bash
+npm run build
+```
 
 ## Running unit tests
 
@@ -22,6 +49,21 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+Before running the tests make sure you are serving the app via `ng serve`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Tools
+Use `BaseComponent` for automatically unsubscribe observables.
+
+Use `ControlMessagesComponent` to display error messages of reactive form controls 
+
+For server rendering check:
+ ```bash
+  constructor(private platform: PlatformService) { }
+  
+  # Check is browser
+  this.platform.isBrowser()
+  
+  # Check is server
+  this.platform.isServer()
+ ```
+
