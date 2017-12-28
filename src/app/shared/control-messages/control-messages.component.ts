@@ -4,11 +4,6 @@ import { throttleTime, debounceTime } from 'rxjs/operators';
 
 const debounce = 250;
 
-interface ControlMessagesBind {
-  form: FormGroup;
-  name: string;
-}
-
 function getConfig(validatorValue) {
   return {
     required: 'Please fill in this field',
@@ -27,15 +22,15 @@ function getConfig(validatorValue) {
   styleUrls: ['./control-messages.component.scss']
 })
 export class ControlMessagesComponent implements OnInit {
-  @Input() bind: ControlMessagesBind;
+  @Input() control: AbstractControl;
   @Input() messages = {};
-  private control: AbstractControl;
   private errorMessage = '';
+  private controlName = '';
 
   @HostListener('window:click', ['$event']) private clickGlobal({ target }: MouseEvent) {
     const isButtonSubmit = target instanceof HTMLButtonElement && target.type === 'submit';
     const form = target.closest('form');
-    const controlElement = form && form.querySelector(`[formControlName="${this.bind.name}"]`);
+    const controlElement = form && this.controlName && form.querySelector(`[formControlName="${this.controlName}"]`);
     if (isButtonSubmit && controlElement && this.control) {
       this.control.markAsTouched();
       this.errorMessage = this.getErrorMessage();
@@ -43,7 +38,10 @@ export class ControlMessagesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.control = this.bind.form.get(this.bind.name);
+    this.controlName = Object.keys(this.control.parent.controls).reduce(
+      (controlName, name) => (this.control === this.control.parent.get(name) ? name : controlName),
+      '',
+    );
     this.control.valueChanges
       .pipe(
         throttleTime(debounce),
