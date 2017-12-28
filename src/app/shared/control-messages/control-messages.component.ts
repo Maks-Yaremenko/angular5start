@@ -32,8 +32,11 @@ export class ControlMessagesComponent implements OnInit {
   private control: AbstractControl;
   private errorMessage = '';
 
-  @HostListener('window:click', ['$event']) private clickGlobal(event) {
-    if (event.target.type === 'submit' && this.control) {
+  @HostListener('window:click', ['$event']) private clickGlobal({ target }: MouseEvent) {
+    const isButtonSubmit = target instanceof HTMLButtonElement && target.type === 'submit';
+    const form = target.closest('form');
+    const controlElement = form && form.querySelector(`[formControlName="${this.bind.name}"]`);
+    if (isButtonSubmit && controlElement && this.control) {
       this.control.markAsTouched();
       this.errorMessage = this.getErrorMessage();
     }
